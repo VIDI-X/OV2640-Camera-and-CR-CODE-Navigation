@@ -6,20 +6,40 @@
 
 #include <ESP32QRCodeReader.h>
 
+#define CAMERA_MODEL_VIDI_X \
+  {                         \
+    .PWDN_GPIO_NUM = 14,    \
+    .RESET_GPIO_NUM = -1,   \
+    .XCLK_GPIO_NUM = 0,     \
+    .SIOD_GPIO_NUM = 2,     \
+    .SIOC_GPIO_NUM = 27,    \
+    .Y9_GPIO_NUM = 35,      \
+    .Y8_GPIO_NUM = 34,      \
+    .Y7_GPIO_NUM = 39,      \
+    .Y6_GPIO_NUM = 36,      \
+    .Y5_GPIO_NUM = 13,      \
+    .Y4_GPIO_NUM = 19,      \
+    .Y3_GPIO_NUM = 12,      \
+    .Y2_GPIO_NUM = 15,      \
+    .VSYNC_GPIO_NUM = 33,   \
+    .HREF_GPIO_NUM = 4,     \
+    .PCLK_GPIO_NUM = 22,    \
+  }
+
 #define TFT_DC 21 // Data/Command VIDI X zaslona spojen je na PIN 21
 #define TFT_CS 5  // Chip select VIDI X zaslona spojen je na PIN 5
 
 // stvaranje TFT objekta (zaslon)
 Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC);
 
-ESP32QRCodeReader reader(CAMERA_MODEL_WROVER_KIT);
+ESP32QRCodeReader reader(CAMERA_MODEL_VIDI_X);
 struct QRCodeData qrCodeData;
 
 #define speed 25  // Less is Fasster
 
 #define CELL 8    // Definiramo veličinu jedne čelije u pixelaima
 #define RAW 33    // Broj redova naše igre
-#define COL 27   // Definiramo broj stupaca naše igre
+#define COL 33   // Definiramo broj stupaca naše igre
 #define ssf 9     // 320 pixels / COL
 
 #define Player 9  // Naš igrač
