@@ -1,1 +1,1 @@
-# OV2640-Camera-and-CR-CODE-Navigation
+# OV2640-Camera-and-QR-CODE-Navigation
